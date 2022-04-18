@@ -28,7 +28,8 @@ class _$TaxonomyTermTearOff {
       required String description,
       @JsonKey(name: 'parent_id') String? parentId,
       String? taxonomy,
-      String? language}) {
+      String? language,
+      List<OtherAttribute>? otherAttribute}) {
     return _TaxonomyTerm(
       id: id,
       term: term,
@@ -36,6 +37,7 @@ class _$TaxonomyTermTearOff {
       parentId: parentId,
       taxonomy: taxonomy,
       language: language,
+      otherAttribute: otherAttribute,
     );
   }
 
@@ -56,6 +58,8 @@ mixin _$TaxonomyTerm {
   String? get parentId => throw _privateConstructorUsedError;
   String? get taxonomy => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
+  List<OtherAttribute>? get otherAttribute =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,7 +78,8 @@ abstract class $TaxonomyTermCopyWith<$Res> {
       String description,
       @JsonKey(name: 'parent_id') String? parentId,
       String? taxonomy,
-      String? language});
+      String? language,
+      List<OtherAttribute>? otherAttribute});
 }
 
 /// @nodoc
@@ -93,6 +98,7 @@ class _$TaxonomyTermCopyWithImpl<$Res> implements $TaxonomyTermCopyWith<$Res> {
     Object? parentId = freezed,
     Object? taxonomy = freezed,
     Object? language = freezed,
+    Object? otherAttribute = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -119,6 +125,10 @@ class _$TaxonomyTermCopyWithImpl<$Res> implements $TaxonomyTermCopyWith<$Res> {
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherAttribute: otherAttribute == freezed
+          ? _value.otherAttribute
+          : otherAttribute // ignore: cast_nullable_to_non_nullable
+              as List<OtherAttribute>?,
     ));
   }
 }
@@ -136,7 +146,8 @@ abstract class _$TaxonomyTermCopyWith<$Res>
       String description,
       @JsonKey(name: 'parent_id') String? parentId,
       String? taxonomy,
-      String? language});
+      String? language,
+      List<OtherAttribute>? otherAttribute});
 }
 
 /// @nodoc
@@ -157,6 +168,7 @@ class __$TaxonomyTermCopyWithImpl<$Res> extends _$TaxonomyTermCopyWithImpl<$Res>
     Object? parentId = freezed,
     Object? taxonomy = freezed,
     Object? language = freezed,
+    Object? otherAttribute = freezed,
   }) {
     return _then(_TaxonomyTerm(
       id: id == freezed
@@ -183,6 +195,10 @@ class __$TaxonomyTermCopyWithImpl<$Res> extends _$TaxonomyTermCopyWithImpl<$Res>
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
               as String?,
+      otherAttribute: otherAttribute == freezed
+          ? _value.otherAttribute
+          : otherAttribute // ignore: cast_nullable_to_non_nullable
+              as List<OtherAttribute>?,
     ));
   }
 }
@@ -196,7 +212,8 @@ class _$_TaxonomyTerm extends _TaxonomyTerm {
       required this.description,
       @JsonKey(name: 'parent_id') this.parentId,
       this.taxonomy,
-      this.language})
+      this.language,
+      this.otherAttribute})
       : super._();
 
   factory _$_TaxonomyTerm.fromJson(Map<String, dynamic> json) =>
@@ -215,10 +232,12 @@ class _$_TaxonomyTerm extends _TaxonomyTerm {
   final String? taxonomy;
   @override
   final String? language;
+  @override
+  final List<OtherAttribute>? otherAttribute;
 
   @override
   String toString() {
-    return 'TaxonomyTerm(id: $id, term: $term, description: $description, parentId: $parentId, taxonomy: $taxonomy, language: $language)';
+    return 'TaxonomyTerm(id: $id, term: $term, description: $description, parentId: $parentId, taxonomy: $taxonomy, language: $language, otherAttribute: $otherAttribute)';
   }
 
   @override
@@ -232,7 +251,9 @@ class _$_TaxonomyTerm extends _TaxonomyTerm {
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.parentId, parentId) &&
             const DeepCollectionEquality().equals(other.taxonomy, taxonomy) &&
-            const DeepCollectionEquality().equals(other.language, language));
+            const DeepCollectionEquality().equals(other.language, language) &&
+            const DeepCollectionEquality()
+                .equals(other.otherAttribute, otherAttribute));
   }
 
   @override
@@ -243,7 +264,8 @@ class _$_TaxonomyTerm extends _TaxonomyTerm {
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(parentId),
       const DeepCollectionEquality().hash(taxonomy),
-      const DeepCollectionEquality().hash(language));
+      const DeepCollectionEquality().hash(language),
+      const DeepCollectionEquality().hash(otherAttribute));
 
   @JsonKey(ignore: true)
   @override
@@ -263,7 +285,8 @@ abstract class _TaxonomyTerm extends TaxonomyTerm {
       required String description,
       @JsonKey(name: 'parent_id') String? parentId,
       String? taxonomy,
-      String? language}) = _$_TaxonomyTerm;
+      String? language,
+      List<OtherAttribute>? otherAttribute}) = _$_TaxonomyTerm;
   _TaxonomyTerm._() : super._();
 
   factory _TaxonomyTerm.fromJson(Map<String, dynamic> json) =
@@ -283,7 +306,219 @@ abstract class _TaxonomyTerm extends TaxonomyTerm {
   @override
   String? get language;
   @override
+  List<OtherAttribute>? get otherAttribute;
+  @override
   @JsonKey(ignore: true)
   _$TaxonomyTermCopyWith<_TaxonomyTerm> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+OtherAttribute _$OtherAttributeFromJson(Map<String, dynamic> json) {
+  return _OtherAttribute.fromJson(json);
+}
+
+/// @nodoc
+class _$OtherAttributeTearOff {
+  const _$OtherAttributeTearOff();
+
+  _OtherAttribute call(
+      {required String id,
+      @JsonKey(name: 'link_id') required String linkId,
+      @JsonKey(name: 'link_type') required String linkType}) {
+    return _OtherAttribute(
+      id: id,
+      linkId: linkId,
+      linkType: linkType,
+    );
+  }
+
+  OtherAttribute fromJson(Map<String, Object?> json) {
+    return OtherAttribute.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $OtherAttribute = _$OtherAttributeTearOff();
+
+/// @nodoc
+mixin _$OtherAttribute {
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_id')
+  String get linkId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_type')
+  String get linkType => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OtherAttributeCopyWith<OtherAttribute> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OtherAttributeCopyWith<$Res> {
+  factory $OtherAttributeCopyWith(
+          OtherAttribute value, $Res Function(OtherAttribute) then) =
+      _$OtherAttributeCopyWithImpl<$Res>;
+  $Res call(
+      {String id,
+      @JsonKey(name: 'link_id') String linkId,
+      @JsonKey(name: 'link_type') String linkType});
+}
+
+/// @nodoc
+class _$OtherAttributeCopyWithImpl<$Res>
+    implements $OtherAttributeCopyWith<$Res> {
+  _$OtherAttributeCopyWithImpl(this._value, this._then);
+
+  final OtherAttribute _value;
+  // ignore: unused_field
+  final $Res Function(OtherAttribute) _then;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? linkId = freezed,
+    Object? linkType = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      linkId: linkId == freezed
+          ? _value.linkId
+          : linkId // ignore: cast_nullable_to_non_nullable
+              as String,
+      linkType: linkType == freezed
+          ? _value.linkType
+          : linkType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$OtherAttributeCopyWith<$Res>
+    implements $OtherAttributeCopyWith<$Res> {
+  factory _$OtherAttributeCopyWith(
+          _OtherAttribute value, $Res Function(_OtherAttribute) then) =
+      __$OtherAttributeCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String id,
+      @JsonKey(name: 'link_id') String linkId,
+      @JsonKey(name: 'link_type') String linkType});
+}
+
+/// @nodoc
+class __$OtherAttributeCopyWithImpl<$Res>
+    extends _$OtherAttributeCopyWithImpl<$Res>
+    implements _$OtherAttributeCopyWith<$Res> {
+  __$OtherAttributeCopyWithImpl(
+      _OtherAttribute _value, $Res Function(_OtherAttribute) _then)
+      : super(_value, (v) => _then(v as _OtherAttribute));
+
+  @override
+  _OtherAttribute get _value => super._value as _OtherAttribute;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? linkId = freezed,
+    Object? linkType = freezed,
+  }) {
+    return _then(_OtherAttribute(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      linkId: linkId == freezed
+          ? _value.linkId
+          : linkId // ignore: cast_nullable_to_non_nullable
+              as String,
+      linkType: linkType == freezed
+          ? _value.linkType
+          : linkType // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OtherAttribute extends _OtherAttribute {
+  _$_OtherAttribute(
+      {required this.id,
+      @JsonKey(name: 'link_id') required this.linkId,
+      @JsonKey(name: 'link_type') required this.linkType})
+      : super._();
+
+  factory _$_OtherAttribute.fromJson(Map<String, dynamic> json) =>
+      _$$_OtherAttributeFromJson(json);
+
+  @override
+  final String id;
+  @override
+  @JsonKey(name: 'link_id')
+  final String linkId;
+  @override
+  @JsonKey(name: 'link_type')
+  final String linkType;
+
+  @override
+  String toString() {
+    return 'OtherAttribute(id: $id, linkId: $linkId, linkType: $linkType)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _OtherAttribute &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.linkId, linkId) &&
+            const DeepCollectionEquality().equals(other.linkType, linkType));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(linkId),
+      const DeepCollectionEquality().hash(linkType));
+
+  @JsonKey(ignore: true)
+  @override
+  _$OtherAttributeCopyWith<_OtherAttribute> get copyWith =>
+      __$OtherAttributeCopyWithImpl<_OtherAttribute>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OtherAttributeToJson(this);
+  }
+}
+
+abstract class _OtherAttribute extends OtherAttribute {
+  factory _OtherAttribute(
+          {required String id,
+          @JsonKey(name: 'link_id') required String linkId,
+          @JsonKey(name: 'link_type') required String linkType}) =
+      _$_OtherAttribute;
+  _OtherAttribute._() : super._();
+
+  factory _OtherAttribute.fromJson(Map<String, dynamic> json) =
+      _$_OtherAttribute.fromJson;
+
+  @override
+  String get id;
+  @override
+  @JsonKey(name: 'link_id')
+  String get linkId;
+  @override
+  @JsonKey(name: 'link_type')
+  String get linkType;
+  @override
+  @JsonKey(ignore: true)
+  _$OtherAttributeCopyWith<_OtherAttribute> get copyWith =>
       throw _privateConstructorUsedError;
 }

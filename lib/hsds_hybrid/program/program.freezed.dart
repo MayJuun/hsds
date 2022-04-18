@@ -24,7 +24,7 @@ class _$ProgramTearOff {
 
   _Program call(
       {required String id,
-      Reference organization,
+      required Reference organization,
       required String name,
       @JsonKey(name: 'alternate_name') String? alternateName}) {
     return _Program(
@@ -65,6 +65,8 @@ abstract class $ProgramCopyWith<$Res> {
       Reference organization,
       String name,
       @JsonKey(name: 'alternate_name') String? alternateName});
+
+  $ReferenceCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -101,6 +103,13 @@ class _$ProgramCopyWithImpl<$Res> implements $ProgramCopyWith<$Res> {
               as String?,
     ));
   }
+
+  @override
+  $ReferenceCopyWith<$Res> get organization {
+    return $ReferenceCopyWith<$Res>(_value.organization, (value) {
+      return _then(_value.copyWith(organization: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -113,6 +122,9 @@ abstract class _$ProgramCopyWith<$Res> implements $ProgramCopyWith<$Res> {
       Reference organization,
       String name,
       @JsonKey(name: 'alternate_name') String? alternateName});
+
+  @override
+  $ReferenceCopyWith<$Res> get organization;
 }
 
 /// @nodoc
@@ -157,7 +169,7 @@ class __$ProgramCopyWithImpl<$Res> extends _$ProgramCopyWithImpl<$Res>
 class _$_Program extends _Program {
   _$_Program(
       {required this.id,
-      this.organization,
+      required this.organization,
       required this.name,
       @JsonKey(name: 'alternate_name') this.alternateName})
       : super._();
@@ -215,7 +227,7 @@ class _$_Program extends _Program {
 abstract class _Program extends Program {
   factory _Program(
       {required String id,
-      Reference organization,
+      required Reference organization,
       required String name,
       @JsonKey(name: 'alternate_name') String? alternateName}) = _$_Program;
   _Program._() : super._();

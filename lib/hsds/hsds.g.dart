@@ -8,16 +8,18 @@ part of 'hsds.dart';
 
 _$_Organization _$$_OrganizationFromJson(Map<String, dynamic> json) =>
     _$_Organization(
-      id: json['id'],
+      id: Uuid.fromJson(json['id']),
       name: json['name'] as String,
       alternateName: json['alternate_name'] as String?,
       description: json['description'] as String,
-      email: json['email'],
-      url: json['url'],
+      email: json['email'] == null ? null : Email.fromJson(json['email']),
+      url: json['url'] == null ? null : HsdsUri.fromJson(json['url']),
       taxStatus: json['tax_status'] as String?,
       taxId: json['tax_id'] as String?,
       yearIncorporated: json['year_incorporated'] as String?,
-      legalStatus: json['legal_status'],
+      legalStatus: json['legal_status'] == null
+          ? null
+          : HsdsDate.fromJson(json['legal_status']),
     );
 
 Map<String, dynamic> _$$_OrganizationToJson(_$_Organization instance) =>
@@ -36,7 +38,7 @@ Map<String, dynamic> _$$_OrganizationToJson(_$_Organization instance) =>
 
 _$_Program _$$_ProgramFromJson(Map<String, dynamic> json) => _$_Program(
       id: json['id'] as String,
-      organizationId: json['organization_id'],
+      organizationId: Uuid.fromJson(json['organization_id']),
       name: json['name'] as String,
       alternateName: json['alternate_name'] as String?,
     );
@@ -56,8 +58,8 @@ _$_Service _$$_ServiceFromJson(Map<String, dynamic> json) => _$_Service(
       name: json['name'] as String,
       alternateName: json['alternate_name'] as String?,
       description: json['description'] as String?,
-      url: json['url'],
-      email: json['email'],
+      url: json['url'] == null ? null : HsdsUri.fromJson(json['url']),
+      email: json['email'] == null ? null : Email.fromJson(json['email']),
       status: json['status'] as String,
       interpretationServices: json['interpretation_services'] as String?,
       applicationProcess: json['application_process'] as String?,
@@ -140,8 +142,12 @@ _$_Location _$$_LocationFromJson(Map<String, dynamic> json) => _$_Location(
       alternateName: json['alternate_name'] as String?,
       description: json['description'] as String?,
       transportation: json['transportation'] as String?,
-      latitude: json['latitude'],
-      longitude: json['longitude'],
+      latitude: json['latitude'] == null
+          ? null
+          : HsdsNumber.fromJson(json['latitude']),
+      longitude: json['longitude'] == null
+          ? null
+          : HsdsNumber.fromJson(json['longitude']),
     );
 
 Map<String, dynamic> _$$_LocationToJson(_$_Location instance) =>
@@ -164,7 +170,9 @@ _$_Phone _$$_PhoneFromJson(Map<String, dynamic> json) => _$_Phone(
       contactId: json['contact_id'] as String?,
       serviceAtLocationId: json['service_at_location_id'] as String?,
       number: json['number'] as String,
-      extension: json['extension'],
+      extension: json['extension'] == null
+          ? null
+          : HsdsNumber.fromJson(json['extension']),
       type: json['type'] as String?,
       language: json['language'] as String?,
       description: json['description'] as String?,
@@ -194,7 +202,7 @@ _$_Contact _$$_ContactFromJson(Map<String, dynamic> json) => _$_Contact(
       name: json['name'] as String?,
       title: json['title'] as String?,
       department: json['department'] as String?,
-      email: json['email'],
+      email: json['email'] == null ? null : Email.fromJson(json['email']),
     );
 
 Map<String, dynamic> _$$_ContactToJson(_$_Contact instance) =>
@@ -278,22 +286,37 @@ _$_Schedule _$$_ScheduleFromJson(Map<String, dynamic> json) => _$_Schedule(
       serviceId: json['service_id'] as String?,
       locationId: json['location_id'] as String?,
       serviceAtLocationId: json['service_at_location_id'] as String?,
-      validFrom: json['valid_from'],
-      validTo: json['valid_to'],
-      dtstart: json['dtstart'],
-      timezone: json['timezone'],
-      until: json['until'],
-      count: json['count'],
-      wkst: json['wkst'],
+      validFrom: json['valid_from'] == null
+          ? null
+          : HsdsDate.fromJson(json['valid_from']),
+      validTo:
+          json['valid_to'] == null ? null : HsdsDate.fromJson(json['valid_to']),
+      dtstart:
+          json['dtstart'] == null ? null : HsdsDate.fromJson(json['dtstart']),
+      timezone: json['timezone'] == null
+          ? null
+          : HsdsNumber.fromJson(json['timezone']),
+      until: json['until'] == null ? null : HsdsDate.fromJson(json['until']),
+      count: json['count'] == null ? null : HsdsDate.fromJson(json['count']),
+      wkst: json['wkst'] == null ? null : HsdsDate.fromJson(json['wkst']),
       freq: json['freq'] as String?,
-      interval: json['interval'],
+      interval: json['interval'] == null
+          ? null
+          : HsdsNumber.fromJson(json['interval']),
       byday: json['byday'] as String?,
       byweekno: json['byweekno'] as String?,
-      bymonthday: json['bymonthday'],
-      byyearday: json['byyearday'],
+      bymonthday: json['bymonthday'] == null
+          ? null
+          : HsdsNumber.fromJson(json['bymonthday']),
+      byyearday: json['byyearday'] == null
+          ? null
+          : HsdsNumber.fromJson(json['byyearday']),
       description: json['description'] as String?,
-      opensAt: json['opens_at'],
-      closesAt: json['closes_at'],
+      opensAt:
+          json['opens_at'] == null ? null : HsdsTime.fromJson(json['opens_at']),
+      closesAt: json['closes_at'] == null
+          ? null
+          : HsdsTime.fromJson(json['closes_at']),
     );
 
 Map<String, dynamic> _$$_ScheduleToJson(_$_Schedule instance) =>
@@ -448,7 +471,7 @@ _$_Metadata _$$_MetadataFromJson(Map<String, dynamic> json) => _$_Metadata(
       id: json['id'] as String,
       resourceId: json['resource_id'] as String,
       resourceType: json['resource_type'] as String,
-      lastActionDate: json['last_action_date'],
+      lastActionDate: HsdsDateTime.fromJson(json['last_action_date']),
       lastActionType: json['last_action_type'] as String,
       fieldName: json['field_name'] as String,
       previousValue: json['previous_value'] as String,

@@ -10,7 +10,7 @@ _$_Metadata _$$_MetadataFromJson(Map<String, dynamic> json) => _$_Metadata(
       id: json['id'] as String,
       resourceId: json['resource_id'] as String,
       resourceType: json['resource_type'] as String,
-      lastActionDate: json['last_action_date'],
+      lastActionDate: HsdsDateTime.fromJson(json['last_action_date']),
       lastActionType: json['last_action_type'] as String,
       fieldName: json['field_name'] as String,
       previousValue: json['previous_value'] as String,

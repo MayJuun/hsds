@@ -27,6 +27,7 @@ class Organization with HsdsObject, _$Organization {
     @JsonKey(name: 'tax_id') String? taxId,
     @JsonKey(name: 'year_incorporated') String? yearIncorporated,
     @JsonKey(name: 'legal_status') HsdsDate? legalStatus,
+    List<Contact>? contact,
     List<Phone>? phone,
   }) = _Organization;
 
@@ -60,3 +61,43 @@ class Organization with HsdsObject, _$Organization {
     }
   }
 }
+
+@freezed
+class OrganizationFunding with _$OrganizationFunding {
+  OrganizationFunding._();
+  factory OrganizationFunding({
+    required String id,
+    String? source,
+  }) = _OrganizationFunding;
+
+  /// Produces a Yaml formatted String version of the object
+  String toYaml() => json2yaml(toJson());
+
+  /// Factory constructor that accepts a [String] in YAML format as an argument
+  factory OrganizationFunding.fromYaml(dynamic yaml) => yaml is String
+      ? OrganizationFunding.fromJson(
+          jsonDecode(jsonEncode(loadYaml(yaml))) as Map<String, dynamic>)
+      : yaml is YamlMap
+          ? OrganizationFunding.fromJson(
+              jsonDecode(jsonEncode(yaml)) as Map<String, dynamic>)
+          : throw ArgumentError(
+              'OrganizationFunding cannot be constructed from input provided,'
+              ' it is neither a yaml string nor a yaml map.');
+
+  /// Factory constructor, accepts [Map<String, dynamic>] as an argument
+  factory OrganizationFunding.fromJson(Map<String, dynamic> json) =>
+      _$OrganizationFundingFromJson(json);
+
+  /// Acts like a constructor, returns a [OrganizationFunding], accepts a
+  /// [String] as an argument, mostly because I got tired of typing it out
+  factory OrganizationFunding.fromJsonString(String source) {
+    final json = jsonDecode(source);
+    if (json is Map<String, dynamic>) {
+      return _$OrganizationFundingFromJson(json);
+    } else {
+      throw FormatException('FormatException: You passed $json'
+          'This does not properly decode to a Map<String,dynamic>.');
+    }
+  }
+}
+

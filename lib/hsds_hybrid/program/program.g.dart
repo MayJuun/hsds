@@ -8,7 +8,8 @@ part of 'program.dart';
 
 _$_Program _$$_ProgramFromJson(Map<String, dynamic> json) => _$_Program(
       id: json['id'] as String,
-      organization: json['organization'],
+      organization:
+          Reference.fromJson(json['organization'] as Map<String, dynamic>),
       name: json['name'] as String,
       alternateName: json['alternate_name'] as String?,
     );

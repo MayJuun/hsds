@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:fhir_yaml/fhir_yaml.dart';
+import 'package:fhir/r4/special_types/special_types.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:yaml/yaml.dart';
 
@@ -16,7 +17,7 @@ class Program with HsdsObject, _$Program {
   Program._();
   factory Program({
     required String id,
-    Reference organization,
+    required Reference organization,
     required String name,
     @JsonKey(name: 'alternate_name') String? alternateName,
   }) = _Program;
